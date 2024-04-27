@@ -12,8 +12,9 @@ type LeaderboardHandler struct {
 
 func (b LeaderboardHandler) GetLeaderboard(w http.ResponseWriter, r *http.Request) {
 	err := json.NewEncoder(w).Encode(models.GetLeaderboard())
+
 	if err != nil {
-		http.Error(w, "Internal error", http.StatusInternalServerError)
+		http.Error(w, "Unexpected error", http.StatusInternalServerError)
 		return
 	}
 }
