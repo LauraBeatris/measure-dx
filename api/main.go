@@ -11,6 +11,9 @@ import (
 	_ "github.com/joho/godotenv/autoload"
 )
 
+// TODO - Configure Sentry
+// TODO - Configure authentication/cors
+// TODO - Configure data storage
 func main() {
 	cenv.Init()
 
