@@ -2,19 +2,27 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 
+	"github.com/LauraBeatris/dx-measure/cenv"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
+	_ "github.com/joho/godotenv/autoload"
 )
 
 func main() {
+	cenv.Init()
+
+	missingEnvVars := cenv.MissingEnvironmentVariables()
+	if len(missingEnvVars) > 0 {
+		panic(fmt.Sprintf("Missing environment variables: %+v", missingEnvVars))
+	}
+
 	r := chi.NewRouter()
 
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
-
-	// TODO - Report panics to Sentry and re-panic
 
 	r.Get("/leaderboard", func(w http.ResponseWriter, r *http.Request) {
 		data := []string{"Alice", "Bob", "Charlie"}
@@ -30,5 +38,6 @@ func main() {
 		w.Write(jsonData)
 	})
 
-	http.ListenAndServe(":3000", r)
+	port := cenv.Get(cenv.Port)
+	http.ListenAndServe(":"+port, r)
 }
