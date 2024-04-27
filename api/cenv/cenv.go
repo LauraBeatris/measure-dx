@@ -12,7 +12,7 @@ const (
 var requiredEnvVars = []string{}
 
 func Init() {
-	setOptionalEnvVar(Port, "3000")
+	setOptionalEnvVar(Port, "8080")
 }
 
 func setOptionalEnvVar(name, value string) {
