@@ -1,33 +1,34 @@
 package main
 
 import (
-	"embed"
-	"html/template"
-	"log"
+	"encoding/json"
 	"net/http"
-	"os"
+
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 )
 
-//go:embed templates/*
-var resources embed.FS
-
-var t = template.Must(template.ParseFS(resources, "templates/*"))
-
 func main() {
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
+	r := chi.NewRouter()
 
-	}
+	r.Use(middleware.Logger)
+	r.Use(middleware.Recoverer)
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		data := map[string]string{
-			"Region": os.Getenv("FLY_REGION"),
+	// TODO - Report panics to Sentry and re-panic
+
+	r.Get("/leaderboard", func(w http.ResponseWriter, r *http.Request) {
+		data := []string{"Alice", "Bob", "Charlie"}
+
+		jsonData, err := json.Marshal(data)
+
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
 		}
 
-		t.ExecuteTemplate(w, "index.html.tmpl", data)
+		w.Header().Set("Content-Type", "application/json")
+		w.Write(jsonData)
 	})
 
-	log.Println("listening on", port)
-	log.Fatal(http.ListenAndServe(":"+port, nil))
+	http.ListenAndServe(":3000", r)
 }
