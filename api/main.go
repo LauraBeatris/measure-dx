@@ -49,5 +49,6 @@ func ToolsRoutes() chi.Router {
 	r := chi.NewRouter()
 	ToolsHandler := router.ToolsHandler{}
 	r.Get("/", ToolsHandler.ListTools)
+	r.Get("/{id}", ToolsHandler.GetTool)
 	return r
 }

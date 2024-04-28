@@ -1,5 +1,7 @@
 package models
 
+import "fmt"
+
 type Tool struct {
 	ID          string `json:"id"`
 	Name        string `json:"name"`
@@ -42,4 +44,14 @@ var tools = []*Tool{
 // TODO - Fetch from storage, order alphabetically
 func ListTools() []*Tool {
 	return tools
+}
+
+// TODO - Fetch from storage
+func GetTool(id string) (*Tool, error) {
+	for _, tool := range tools {
+		if tool.ID == id {
+			return tool, nil
+		}
+	}
+	return nil, fmt.Errorf("Tool not found")
 }
