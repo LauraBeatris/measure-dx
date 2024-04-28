@@ -1,6 +1,13 @@
-# DX Measure
+# Measure DX
 
 Measure the DX of developer tools.
+
+<p align="center">
+  <a href="https://dx-measure.vercel.app/">
+    <img width="500" alt="Measure DX" src="./.github/docs/landing-page.png">
+  </a>
+</p>
+
 
 ---
 
