@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @keyframes pulse {
-  80% {
-    opacity: 0.8;
+  75% {
+    opacity: 0.75;
   }
 }

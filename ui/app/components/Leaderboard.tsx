@@ -7,7 +7,10 @@ export async function Leaderboard() {
   const leaderboard = await getLeaderboard();
 
   return (
-    <ul className="mx-auto grid gap-2">
+    <ul
+      className="animate-fade-up mx-auto grid gap-2"
+      style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}
+    >
       {leaderboard.map((tool) => (
         <li
           className="relative flex max-w-xl items-center justify-between rounded-md border border-gray-200 bg-white p-3 shadow-lg sm:px-5"
