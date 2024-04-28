@@ -19,7 +19,7 @@ export default function Home() {
             </div>
 
             <Heading
-              className="animate-fade-up font-display bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl md:leading-[5rem]"
+              className="animate-fade-up font-display bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl md:leading-[5rem] dark:from-gray-300 dark:to-gray-50"
               style={{ animationDelay: '0.15s', animationFillMode: 'forwards' }}
             >
               Measure DX
@@ -43,7 +43,7 @@ export default function Home() {
               >
                 Inspired by the{' '}
                 <Link
-                  className="underline decoration-emerald-500/30 decoration-2 underline-offset-4 hover:decoration-4"
+                  className="animate-pulse font-medium underline decoration-emerald-500/30 decoration-2 underline-offset-4 opacity-95 hover:decoration-4"
                   target="_blank"
                   rel="noopener noreferrer"
                   href="https://dx.addy.ie/"
