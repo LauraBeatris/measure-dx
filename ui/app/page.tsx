@@ -9,8 +9,8 @@ export default function Home() {
       <section className="flex flex-col text-center">
         <HeadingLevel>
           <div className="mb-4 flex items-center justify-center gap-4">
-            <div className="relative h-10 w-10 md:h-20 md:w-20">
-              <Image src="/logo.png" alt="Logo" quality={100} priority fill />
+            <div className="relative flex h-10 w-10 animate-pulse items-center justify-center rounded-lg border-2 border-gray-100 bg-gradient-to-r from-emerald-500 to-emerald-400 md:h-20 md:w-20">
+              <span className="text-2xl md:text-6xl">📏</span>
             </div>
 
             <Heading className="text-3xl font-bold text-gray-900 md:text-7xl dark:text-white">
