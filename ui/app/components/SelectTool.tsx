@@ -1,6 +1,7 @@
 'use client';
 
 import * as Ariakit from '@ariakit/react';
+import { useRouter } from 'next/navigation';
 import { matchSorter } from 'match-sorter';
 import { startTransition, useMemo, useState } from 'react';
 import { Tool } from '../lib/api';
@@ -13,6 +14,7 @@ interface SelectToolProps {
 export function SelectTool({ tools }: SelectToolProps) {
   const [searchValue, setSearchValue] = useState('');
   const [selectedToolName, setSelectedToolName] = useState('');
+  const router = useRouter();
 
   const matches = useMemo(() => {
     return matchSorter(tools, searchValue, {
@@ -21,7 +23,11 @@ export function SelectTool({ tools }: SelectToolProps) {
     });
   }, [searchValue, tools]);
 
-  function navigateToMeasure() {}
+  function navigateToMeasure() {
+    const tool = tools.find((tool) => tool.name === selectedToolName);
+
+    router.push(`/tools/${tool?.id}`);
+  }
 
   return (
     <div className="wrapper">
@@ -33,7 +39,13 @@ export function SelectTool({ tools }: SelectToolProps) {
           });
         }}
       >
-        <Ariakit.SelectProvider>
+        <Ariakit.SelectProvider
+          setValue={(value: string) => {
+            startTransition(() => {
+              setSelectedToolName(value);
+            });
+          }}
+        >
           <Ariakit.SelectLabel
             className="label mb-2 text-center text-lg text-gray-800  md:text-xl dark:text-gray-100"
             render={<h2 />}

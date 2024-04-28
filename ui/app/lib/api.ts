@@ -23,3 +23,9 @@ export async function listTools(): Promise<Tool[]> {
 
   return data;
 }
+
+export async function getTool(id: string): Promise<Tool> {
+  const { data } = await client.get(`/tools/${id}`);
+
+  return data;
+}

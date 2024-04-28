@@ -1,18 +1,33 @@
+import { getTool } from '@/app/lib/api';
 import { Heading, HeadingLevel } from '@ariakit/react';
-import { SelectTool } from '../components/SelectTool';
-import { listTools } from '../lib/api';
+import { notFound } from 'next/navigation';
 
-export default async function GetStartedPage() {
-  const tools = await listTools();
+interface ToolPageProps {
+  params: {
+    id: string;
+  };
+}
+
+// TODO - Extract components in the page headers to reusable JSX chunks
+export default async function ToolPage({ params }: ToolPageProps) {
+  const tool = await getTool(params.id);
+
+  if (!tool) {
+    return notFound();
+  }
 
   return (
     <main className="flex h-full min-h-screen w-full flex-col items-center justify-center">
       <header className="flex flex-col text-center">
         <div
-          className="animate-fade-up text-3xs mx-auto mb-1 w-max rounded border px-1.5 py-px font-medium text-gray-500 opacity-0"
+          className="animate-fade-up flex flex-col items-center gap-2 opacity-0"
           style={{ animationDelay: '0.15s', animationFillMode: 'forwards' }}
         >
-          <span className="text-sm text-gray-500">Step 1 of 2</span>
+          <span className="text-md text-gray-500">Measuring {tool.name}</span>
+
+          <div className="mx-auto mb-1 w-max rounded border px-1.5 py-px font-medium text-gray-500">
+            <span className="text-sm">Step 2 of 2</span>
+          </div>
         </div>
         <HeadingLevel>
           <div className="mb-4 flex items-center justify-center gap-1 md:gap-4">
@@ -32,15 +47,16 @@ export default async function GetStartedPage() {
               Measure DX
             </Heading>
           </div>
+          <HeadingLevel>
+            <Heading
+              className="animate-fade-up mb-2 text-lg text-gray-800 opacity-0 md:text-xl dark:text-gray-100"
+              style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}
+            >
+              Rate the following areas:
+            </Heading>
+          </HeadingLevel>
         </HeadingLevel>
       </header>
-
-      <div
-        className="animate-fade-up opacity-0"
-        style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}
-      >
-        <SelectTool tools={tools} />
-      </div>
     </main>
   );
 }
