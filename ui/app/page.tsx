@@ -8,7 +8,7 @@ import { links } from './constants';
 export default function Home() {
   return (
     <main className="flex h-full min-h-screen w-full flex-col items-center justify-center gap-5">
-      <section className="flex flex-col text-center">
+      <header className="flex flex-col text-center">
         <HeadingLevel>
           <div className="mb-4 flex items-center justify-center gap-1 md:gap-4">
             <div
@@ -57,15 +57,18 @@ export default function Home() {
             </HeadingLevel>
           </HeadingLevel>
         </HeadingLevel>
-      </section>
+      </header>
 
       <div
         className="animate-fade-up opacity-0"
         style={{ animationDelay: '0.35s', animationFillMode: 'forwards' }}
       >
-        <Button className="focus-visible:ariakit-outline flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-emerald-500 px-4 font-medium text-gray-50 shadow-xl hover:bg-emerald-600 sm:px-8 sm:text-lg">
+        <Link
+          href="/get-started"
+          className="focus-visible:ariakit-outline flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-emerald-500 px-4 font-medium text-gray-50 shadow-xl hover:bg-emerald-600 sm:px-8 sm:text-lg"
+        >
           Get started
-        </Button>
+        </Link>
       </div>
 
       <section
