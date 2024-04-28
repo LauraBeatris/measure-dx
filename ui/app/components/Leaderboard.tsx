@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getLeaderboard } from '../lib/leaderboard';
+import { getLeaderboard } from '../lib/api';
 import Image from 'next/image';
 import { StarIcon } from './icons/StarIcon';
 

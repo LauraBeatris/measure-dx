@@ -3,17 +3,21 @@
 import * as Ariakit from '@ariakit/react';
 import { matchSorter } from 'match-sorter';
 import { startTransition, useMemo, useState } from 'react';
+import { Tool } from '../lib/api';
 
-const list = ['Resend', 'Vercel', 'Railway', 'Clerk'];
+interface SelectToolProps {
+  tools: Array<Tool>;
+}
 
-export function SelectTool() {
+export function SelectTool({ tools }: SelectToolProps) {
   const [searchValue, setSearchValue] = useState('');
 
   const matches = useMemo(() => {
-    return matchSorter(list, searchValue, {
+    return matchSorter(tools, searchValue, {
+      keys: ['name'],
       baseSort: (a, b) => (a.index < b.index ? -1 : 1),
     });
-  }, [searchValue]);
+  }, [searchValue, tools]);
 
   return (
     <div className="wrapper">
@@ -36,10 +40,10 @@ export function SelectTool() {
               />
             </div>
             <Ariakit.ComboboxList>
-              {matches.map((value) => (
+              {matches.map(({ id, name }) => (
                 <Ariakit.SelectItem
-                  key={value}
-                  value={value}
+                  key={id}
+                  value={name}
                   className="select-item"
                   render={<Ariakit.ComboboxItem />}
                 />

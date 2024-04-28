@@ -1,7 +1,6 @@
 import { HeadingLevel, Heading, Button, VisuallyHidden } from '@ariakit/react';
 import Link from 'next/link';
 import { Leaderboard } from './components/Leaderboard';
-import Image from 'next/image';
 import { GitHubIcon } from './components/icons/GitHubIcon';
 import { links } from './constants';
 

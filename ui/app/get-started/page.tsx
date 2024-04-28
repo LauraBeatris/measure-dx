@@ -1,7 +1,12 @@
 import { Heading, HeadingLevel } from '@ariakit/react';
 import { SelectTool } from '../components/SelectTool';
+import { listTools } from '../lib/api';
 
-export default function GetStartedPage() {
+export default async function GetStartedPage() {
+  const tools = await listTools();
+
+  console.log({ tools });
+
   return (
     <main className="flex h-full min-h-screen w-full flex-col items-center justify-center">
       <header className="flex flex-col text-center">
@@ -38,7 +43,7 @@ export default function GetStartedPage() {
         className="animate-fade-up opacity-0"
         style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}
       >
-        <SelectTool />
+        <SelectTool tools={tools} />
       </div>
     </main>
   );
