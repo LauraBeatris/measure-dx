@@ -23,9 +23,14 @@ export default async function ToolPage({ params }: ToolPageProps) {
           className="animate-fade-up flex flex-col items-center gap-2 opacity-0"
           style={{ animationDelay: '0.15s', animationFillMode: 'forwards' }}
         >
-          <span className="text-md text-gray-500">Measuring {tool.name}</span>
+          <span className="text-md text-gray-500 dark:text-gray-100">
+            Measuring{' '}
+            <span className="animate-pulse font-medium opacity-95 hover:decoration-4">
+              {tool.name}
+            </span>
+          </span>
 
-          <div className="mx-auto mb-1 w-max rounded border px-1.5 py-px font-medium text-gray-500">
+          <div className="mx-auto mb-1 w-max rounded border px-1.5 py-px font-medium text-gray-500 dark:text-gray-100">
             <span className="text-sm">Step 2 of 2</span>
           </div>
         </div>

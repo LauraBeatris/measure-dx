@@ -12,7 +12,9 @@ export default async function GetStartedPage() {
           className="animate-fade-up text-3xs mx-auto mb-1 w-max rounded border px-1.5 py-px font-medium text-gray-500 opacity-0"
           style={{ animationDelay: '0.15s', animationFillMode: 'forwards' }}
         >
-          <span className="text-sm text-gray-500">Step 1 of 2</span>
+          <span className="text-sm text-gray-500 dark:text-gray-100">
+            Step 1 of 2
+          </span>
         </div>
         <HeadingLevel>
           <div className="mb-4 flex items-center justify-center gap-1 md:gap-4">

@@ -4,9 +4,10 @@ import { Leaderboard } from './components/Leaderboard';
 import { GitHubIcon } from './components/icons/GitHubIcon';
 import { links } from './constants';
 
+// TODO - Make it responsive on mobile
 export default function Home() {
   return (
-    <main className="flex h-full min-h-screen w-full flex-col items-center justify-center gap-5">
+    <main className="flex h-full min-h-screen w-full flex-col items-center justify-center gap-5 p-5 md:p-0">
       <header className="flex flex-col text-center">
         <HeadingLevel>
           <div className="mb-4 flex items-center justify-center gap-1 md:gap-4">
