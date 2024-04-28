@@ -1,9 +1,16 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata } from 'next';
+import './globals.css';
+import { Inter } from 'next/font/google';
 
 export const metadata: Metadata = {
-  title: "Measure DX",
+  title: 'Measure DX',
+  description: 'Measure the developer experience offered by different tools.',
 };
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export default function RootLayout({
   children,
@@ -11,8 +18,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="min-h-screen min-w-screen">{children}</body>
+    <html lang="en" className={inter.className}>
+      <body className="bg-gray-50 text-black antialiased dark:bg-gray-800 dark:text-white">
+        {children}
+      </body>
     </html>
   );
 }
