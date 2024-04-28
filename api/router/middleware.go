@@ -8,6 +8,7 @@ import (
 
 func CorsHandler() func(http.Handler) http.Handler {
 	c := cors.New(cors.Options{
+		// TODO: Add production domain
 		AllowedOrigins:   []string{"https://dx-measure.vercel.app"},
 		AllowCredentials: false,
 		AllowedMethods:   []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},

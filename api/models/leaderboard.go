@@ -3,6 +3,7 @@ package models
 type Tool struct {
 	ID          string `json:"id"`
 	Name        string `json:"name"`
+	LogoUrl     string `json:"logoUrl"`
 	WebsiteUrl  string `json:"websiteUrl"`
 	AverageRate string `json:"averageRate"`
 }
@@ -11,6 +12,7 @@ var leaderboard = []*Tool{
 	{
 		ID:          "1",
 		Name:        "Resend",
+		LogoUrl:     "https://avatars.githubusercontent.com/u/109384852?v=4",
 		WebsiteUrl:  "https://resend.com/",
 		AverageRate: "6.0",
 	},
@@ -19,18 +21,21 @@ var leaderboard = []*Tool{
 		Name:        "Vercel",
 		WebsiteUrl:  "https://vercel.com/",
 		AverageRate: "5.0",
+		LogoUrl:     "https://avatars.githubusercontent.com/u/109384852?v=4",
 	},
 	{
 		ID:          "3",
 		Name:        "Vercel",
 		WebsiteUrl:  "https://vercel.com/",
 		AverageRate: "5.0",
+		LogoUrl:     "https://avatars.githubusercontent.com/u/109384852?v=4",
 	},
 	{
 		ID:          "4",
 		Name:        "Vercel",
 		WebsiteUrl:  "https://vercel.com/",
 		AverageRate: "5.0",
+		LogoUrl:     "https://avatars.githubusercontent.com/u/109384852?v=4",
 	},
 }
 
