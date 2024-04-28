@@ -1,6 +1,14 @@
 package models
 
-var leaderboard = []*Tool{
+type Tool struct {
+	ID          string `json:"id"`
+	Name        string `json:"name"`
+	LogoUrl     string `json:"logoUrl"`
+	WebsiteUrl  string `json:"websiteUrl"`
+	AverageRate string `json:"averageRate"`
+}
+
+var tools = []*Tool{
 	{
 		ID:          "1",
 		Name:        "Resend",
@@ -31,7 +39,7 @@ var leaderboard = []*Tool{
 	},
 }
 
-// TODO - Implement leaderboard ordering logic by rate
-func GetLeaderboard() []*Tool {
-	return leaderboard
+// TODO - Fetch from storage, order alphabetically
+func ListTools() []*Tool {
+	return tools
 }
