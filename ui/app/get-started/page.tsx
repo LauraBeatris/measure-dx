@@ -5,8 +5,6 @@ import { listTools } from '../lib/api';
 export default async function GetStartedPage() {
   const tools = await listTools();
 
-  console.log({ tools });
-
   return (
     <main className="flex h-full min-h-screen w-full flex-col items-center justify-center">
       <header className="flex flex-col text-center">
@@ -28,14 +26,6 @@ export default async function GetStartedPage() {
               Measure DX
             </Heading>
           </div>
-          <HeadingLevel>
-            <Heading
-              className="animate-fade-up mb-2 text-lg text-gray-800 opacity-0 md:text-xl dark:text-gray-100"
-              style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}
-            >
-              Choose a tool to measure:
-            </Heading>
-          </HeadingLevel>
         </HeadingLevel>
       </header>
 

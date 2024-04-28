@@ -4,6 +4,7 @@ import * as Ariakit from '@ariakit/react';
 import { matchSorter } from 'match-sorter';
 import { startTransition, useMemo, useState } from 'react';
 import { Tool } from '../lib/api';
+import { PaperPlanIcon } from './icons/PaperPlanIcon';
 
 interface SelectToolProps {
   tools: Array<Tool>;
@@ -11,6 +12,7 @@ interface SelectToolProps {
 
 export function SelectTool({ tools }: SelectToolProps) {
   const [searchValue, setSearchValue] = useState('');
+  const [selectedToolName, setSelectedToolName] = useState('');
 
   const matches = useMemo(() => {
     return matchSorter(tools, searchValue, {
@@ -18,6 +20,8 @@ export function SelectTool({ tools }: SelectToolProps) {
       baseSort: (a, b) => (a.index < b.index ? -1 : 1),
     });
   }, [searchValue, tools]);
+
+  function navigateToMeasure() {}
 
   return (
     <div className="wrapper">
@@ -30,7 +34,13 @@ export function SelectTool({ tools }: SelectToolProps) {
         }}
       >
         <Ariakit.SelectProvider>
-          <Ariakit.Select className="button" />
+          <Ariakit.SelectLabel
+            className="label mb-2 text-center text-lg text-gray-800  md:text-xl dark:text-gray-100"
+            render={<h2 />}
+          >
+            Choose a tool to measure:
+          </Ariakit.SelectLabel>
+          <Ariakit.Select autoFocus className="button" />
           <Ariakit.SelectPopover gutter={4} sameWidth className="popover">
             <div className="combobox-wrapper">
               <Ariakit.Combobox
@@ -52,6 +62,15 @@ export function SelectTool({ tools }: SelectToolProps) {
           </Ariakit.SelectPopover>
         </Ariakit.SelectProvider>
       </Ariakit.ComboboxProvider>
+
+      <Ariakit.Button
+        disabled={!matches.length}
+        onClick={navigateToMeasure}
+        className="focus-visible:ariakit-outline mt-2 flex h-12 items-center justify-center gap-1 whitespace-nowrap rounded-lg bg-emerald-500 px-4 font-medium text-gray-50 shadow-xl hover:bg-emerald-600 sm:px-8 sm:text-lg"
+      >
+        <span>Next step</span>
+        <PaperPlanIcon />
+      </Ariakit.Button>
     </div>
   );
 }
