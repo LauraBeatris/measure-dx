@@ -1,3 +1,4 @@
+import { RateToolForm } from '@/app/components/RateToolForm';
 import { getTool } from '@/app/lib/api';
 import { Heading, HeadingLevel } from '@ariakit/react';
 import { notFound } from 'next/navigation';
@@ -8,7 +9,6 @@ interface ToolPageProps {
   };
 }
 
-// TODO - Extract components in the page headers to reusable JSX chunks
 export default async function ToolPage({ params }: ToolPageProps) {
   const tool = await getTool(params.id);
 
@@ -62,6 +62,10 @@ export default async function ToolPage({ params }: ToolPageProps) {
           </HeadingLevel>
         </HeadingLevel>
       </header>
+
+      <section>
+        <RateToolForm />
+      </section>
     </main>
   );
 }
