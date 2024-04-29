@@ -1,12 +1,12 @@
 'use client';
 
 import * as Ariakit from '@ariakit/react';
-import { useRouter } from 'next/navigation';
 import { matchSorter } from 'match-sorter';
-import { startTransition, useMemo, useState } from 'react';
+import { startTransition, useEffect, useMemo, useState } from 'react';
 import { Tool } from '../lib/api';
 import { PaperPlanIcon } from './icons/PaperPlanIcon';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface SelectToolProps {
   tools: Array<Tool>;
@@ -23,6 +23,12 @@ export function SelectTool({ tools }: SelectToolProps) {
       baseSort: (a, b) => (a.index < b.index ? -1 : 1),
     });
   }, [searchValue, tools]);
+
+  useEffect(() => {
+    if (selectedTool?.id) {
+      router.prefetch(`/tools/${selectedTool.id}`);
+    }
+  }, [router, selectedTool]);
 
   return (
     <div className="wrapper">
@@ -75,7 +81,7 @@ export function SelectTool({ tools }: SelectToolProps) {
         href={`/tools/${selectedTool?.id}`}
         className="focus-visible:ariakit-outline mt-2 flex h-12 items-center justify-center gap-1 whitespace-nowrap rounded-lg bg-emerald-500 px-4 font-medium text-gray-50 shadow-xl hover:bg-emerald-600 sm:px-8 sm:text-lg"
       >
-        <span>Next step</span>
+        <span>Get started</span>
         <PaperPlanIcon />
       </Link>
     </div>

@@ -1,6 +1,7 @@
 import { RateToolForm } from '@/app/components/RateToolForm';
 import { getTool } from '@/app/lib/api';
 import { Heading, HeadingLevel } from '@ariakit/react';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 interface ToolPageProps {
@@ -38,7 +39,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
           <div className="mb-4 flex items-center justify-center gap-1 md:gap-4">
             <div
               className="animate-fade-up opacity-0"
-              style={{ animationDelay: '0.15s', animationFillMode: 'forwards' }}
+              style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}
             >
               <div className="relative flex h-10 w-10 animate-pulse items-center justify-center rounded-lg border-2 border-gray-100 bg-gradient-to-r from-emerald-500 to-emerald-400 md:h-20 md:w-20">
                 <span className="text-2xl md:text-6xl">📏</span>
@@ -63,7 +64,10 @@ export default async function ToolPage({ params }: ToolPageProps) {
         </HeadingLevel>
       </header>
 
-      <section>
+      <section
+        className="animate-fade-up opacity-0"
+        style={{ animationDelay: '0.35s', animationFillMode: 'forwards' }}
+      >
         <RateToolForm />
       </section>
     </main>

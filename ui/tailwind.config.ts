@@ -13,7 +13,7 @@ const config: Config = {
         sans: ['"Geist Sans"', ...defaultTheme.fontFamily.sans],
       },
       animation: {
-        "fade-up": "fade-up 0.5s",
+        "fade-up": "fade-up 0.3s",
       },
       keyframes: {
         "fade-up": {
