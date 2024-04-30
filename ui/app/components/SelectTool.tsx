@@ -7,12 +7,14 @@ import { Tool } from '../lib/api';
 import { PaperPlanIcon } from './icons/PaperPlanIcon';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { SpinnerIcon } from './icons/SpinnerIcon';
 
 interface SelectToolProps {
   tools: Array<Tool>;
 }
 
 export function SelectTool({ tools }: SelectToolProps) {
+  const [isNavigating, setIsNavigating] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [selectedTool, setSelectedTool] = useState<Tool | undefined>(tools[0]);
   const router = useRouter();
@@ -79,10 +81,18 @@ export function SelectTool({ tools }: SelectToolProps) {
 
       <Link
         href={`/tools/${selectedTool?.id}`}
+        onClick={() => setIsNavigating(true)}
         className="focus-visible:ariakit-outline mt-2 flex h-12 items-center justify-center gap-1 whitespace-nowrap rounded-lg bg-emerald-500 px-4 font-medium text-gray-50 shadow-xl hover:bg-emerald-600 sm:px-8 sm:text-lg"
       >
-        <span>Get started</span>
-        <PaperPlanIcon />
+        {isNavigating ? (
+          <SpinnerIcon />
+        ) : (
+          <>
+            {' '}
+            <span>Get started</span>
+            <PaperPlanIcon />
+          </>
+        )}
       </Link>
     </div>
   );
