@@ -12,6 +12,11 @@ export interface Tool {
   averageRate: string;
 }
 
+export interface RateArea {
+  id: string;
+  title: string;
+}
+
 export async function getLeaderboard(): Promise<Tool[]> {
   const { data } = await client.get('/leaderboard');
 
@@ -26,6 +31,12 @@ export async function listTools(): Promise<Tool[]> {
 
 export async function getTool(id: string): Promise<Tool> {
   const { data } = await client.get(`/tools/${id}`);
+
+  return data;
+}
+
+export async function getRateAreas(): Promise<Array<RateArea>> {
+  const { data } = await client.get(`/rates`);
 
   return data;
 }

@@ -1,5 +1,5 @@
 import { RateToolForm } from '@/app/components/RateToolForm';
-import { getTool } from '@/app/lib/api';
+import { getRateAreas, getTool } from '@/app/lib/api';
 import { Heading, HeadingLevel } from '@ariakit/react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -12,8 +12,9 @@ interface ToolPageProps {
 
 export default async function ToolPage({ params }: ToolPageProps) {
   const tool = await getTool(params.id);
+  const rateAreas = await getRateAreas();
 
-  if (!tool) {
+  if (!tool || !rateAreas?.length) {
     return notFound();
   }
 
@@ -68,7 +69,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
         className="animate-fade-up opacity-0"
         style={{ animationDelay: '0.35s', animationFillMode: 'forwards' }}
       >
-        <RateToolForm />
+        <RateToolForm rateAreas={rateAreas} />
       </section>
     </main>
   );
