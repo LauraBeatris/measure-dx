@@ -33,6 +33,7 @@ func main() {
 	})
 	r.Mount("/leaderboard", LeaderboardRoutes())
 	r.Mount("/tools", ToolsRoutes())
+	r.Mount("/rates", RatesRoutes())
 
 	port := cenv.Get(cenv.Port)
 	http.ListenAndServe(":"+port, r)
@@ -50,5 +51,12 @@ func ToolsRoutes() chi.Router {
 	ToolsHandler := router.ToolsHandler{}
 	r.Get("/", ToolsHandler.ListTools)
 	r.Get("/{id}", ToolsHandler.GetTool)
+	return r
+}
+
+func RatesRoutes() chi.Router {
+	r := chi.NewRouter()
+	ToolsHandler := router.ToolsHandler{}
+	r.Get("/", ToolsHandler.ListRateAreas)
 	return r
 }
