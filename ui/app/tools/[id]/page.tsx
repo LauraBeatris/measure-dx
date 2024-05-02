@@ -2,7 +2,6 @@ import { RateToolForm } from '@/app/components/RateToolForm';
 import { PrimaryHeader } from '@/app/components/layout/PrimaryHeader';
 import { getRateAreas, getTool } from '@/app/lib/api';
 import { Heading, HeadingLevel } from '@ariakit/react';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 interface ToolPageProps {
