@@ -1,10 +1,15 @@
-import { Heading, HeadingLevel } from '@ariakit/react';
+import { HeadingLevel } from '@ariakit/react';
 import { SelectTool } from '../components/SelectTool';
-import { listTools } from '../lib/api';
 import { PrimaryHeader } from '../components/layout/PrimaryHeader';
+import { listTools } from '../lib/supabase/queries';
+import { notFound } from 'next/navigation';
 
 export default async function GetStartedPage() {
   const tools = await listTools();
+
+  if (!tools?.length) {
+    notFound();
+  }
 
   return (
     <main className="flex h-full min-h-screen w-full flex-col items-center justify-center">

@@ -1,8 +1,10 @@
 import { rateTool } from '@/app/actions';
-import { RateArea } from '@/app/lib/api';
 import * as Ariakit from '@ariakit/react';
 import Link from 'next/link';
 import { RateGroup } from './RateGroup';
+import { Tables } from '@/app/types/supabase';
+
+type RateArea = Tables<'rate_areas'>;
 
 interface RateToolFormProps {
   rateAreas: RateArea[];

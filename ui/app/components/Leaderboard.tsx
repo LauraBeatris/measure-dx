@@ -1,10 +1,15 @@
 import Link from 'next/link';
-import { getLeaderboard } from '../lib/api';
 import Image from 'next/image';
 import { StarIcon } from './icons/StarIcon';
+import { getLeaderboard } from '../lib/supabase/queries';
+import { notFound } from 'next/navigation';
 
 export async function Leaderboard() {
   const leaderboard = await getLeaderboard();
+
+  if (!leaderboard?.length) {
+    return notFound();
+  }
 
   return (
     <ul
@@ -18,7 +23,7 @@ export async function Leaderboard() {
         >
           <div className="flex items-center space-x-3">
             <Image
-              src={tool.logoUrl}
+              src={tool.logo_url}
               width={20}
               height={20}
               alt={tool.name}
@@ -36,9 +41,9 @@ export async function Leaderboard() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="line-clamp-1 w-72 text-sm text-gray-500 underline-offset-2 transition-all hover:text-gray-800 hover:underline"
-                href={tool.websiteUrl}
+                href={tool.website_url}
               >
-                {tool.websiteUrl}
+                {tool.website_url}
               </Link>
             </div>
           </div>
@@ -46,7 +51,7 @@ export async function Leaderboard() {
           <div className="flex items-center space-x-1 rounded-md bg-gray-100 px-2 py-0.5 text-gray-700">
             <StarIcon />
 
-            <p className="text-sm">{tool.averageRate}</p>
+            <p className="text-sm">{tool.average_rate}</p>
           </div>
         </li>
       ))}

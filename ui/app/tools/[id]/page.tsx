@@ -1,6 +1,6 @@
 import { RateToolForm } from '@/app/components/RateToolForm';
 import { PrimaryHeader } from '@/app/components/layout/PrimaryHeader';
-import { getRateAreas, getTool } from '@/app/lib/api';
+import { getToolById, listRateAreas } from '@/app/lib/supabase/queries';
 import { Heading, HeadingLevel } from '@ariakit/react';
 import { notFound } from 'next/navigation';
 
@@ -11,8 +11,8 @@ interface ToolPageProps {
 }
 
 export default async function ToolPage({ params }: ToolPageProps) {
-  const tool = await getTool(params.id);
-  const rateAreas = await getRateAreas();
+  const tool = await getToolById(params.id);
+  const rateAreas = await listRateAreas();
 
   if (!tool || !rateAreas?.length) {
     return notFound();

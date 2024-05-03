@@ -3,11 +3,13 @@
 import * as Ariakit from '@ariakit/react';
 import { matchSorter } from 'match-sorter';
 import { startTransition, useEffect, useMemo, useState } from 'react';
-import { Tool } from '../lib/api';
 import { PaperPlanIcon } from './icons/PaperPlanIcon';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { SpinnerIcon } from './icons/SpinnerIcon';
+import { Tables } from '../types/supabase';
+
+type Tool = Tables<'tools'>;
 
 interface SelectToolProps {
   tools: Array<Tool>;
