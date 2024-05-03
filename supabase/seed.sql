@@ -25,3 +25,17 @@ values
     'https://supabase.com/',
     0
   );
+
+insert into
+  public.rate_areas (title)
+values
+  (
+    'Tool is simple, easy to install, setup and use'
+  ),
+  ('High performance on dev environments'),
+  ('Clear documentation'),
+  ('Strong community support'),
+  ('Reduces friction for developers'),
+  ('Simple registration process'),
+  ('Zero downtime'),
+  ('Accessible to different types of roles');
