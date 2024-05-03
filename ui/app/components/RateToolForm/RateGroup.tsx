@@ -1,11 +1,13 @@
 'use client';
 
-import { RateArea } from '@/app/lib/api';
 import { useState } from 'react';
 import * as Ariakit from '@ariakit/react';
 import { RateOption } from './RateOption';
+import { Tables } from '@/app/types/supabase';
 
-interface RateGroupProps extends Omit<RateArea, 'id'> {}
+type RateArea = Tables<'rate_areas'>;
+
+interface RateGroupProps extends Pick<RateArea, 'title'> {}
 
 export function RateGroup({ title }: RateGroupProps) {
   const [currentChecked, setCurrentChecked] = useState(0);
