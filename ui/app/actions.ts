@@ -2,5 +2,6 @@
 
 // TODO - Implement tool rating
 export async function rateTool(formData: FormData) {
-  console.log('Hello World', Object.fromEntries(formData));
+  const formEntries = Object.fromEntries(formData);
+  console.log(formEntries);
 }

@@ -7,10 +7,12 @@ import { Tables } from '@/app/types/supabase';
 
 type RateArea = Tables<'rate_areas'>;
 
-interface RateGroupProps extends Pick<RateArea, 'title'> {}
+interface RateGroupProps extends Pick<RateArea, 'id' | 'title'> {}
 
-export function RateGroup({ title }: RateGroupProps) {
+export function RateGroup({ id, title }: RateGroupProps) {
   const [currentChecked, setCurrentChecked] = useState(0);
+
+  const inputName = String(id);
 
   return (
     <Ariakit.RadioGroup
@@ -26,21 +28,21 @@ export function RateGroup({ title }: RateGroupProps) {
       <div className="grid grid-cols-3 gap-x-1.5 tracking-tight sm:tracking-normal">
         <RateOption
           label="Bad"
-          name="bad"
+          name={inputName}
           value={0}
           currentChecked={currentChecked}
         />
 
         <RateOption
           label="So-so"
-          name="average"
+          name={inputName}
           value={5}
           currentChecked={currentChecked}
         />
 
         <RateOption
           label="Good"
-          name="good"
+          name={inputName}
           value={10}
           currentChecked={currentChecked}
         />

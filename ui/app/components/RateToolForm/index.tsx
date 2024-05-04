@@ -15,7 +15,7 @@ export function RateToolForm({ rateAreas }: RateToolFormProps) {
     <form action={rateTool} className="mt-2 flex flex-col">
       {rateAreas.map(({ id, title }) => (
         <Ariakit.RadioProvider key={id}>
-          <RateGroup title={title} />
+          <RateGroup id={id} title={title} />
         </Ariakit.RadioProvider>
       ))}
 
