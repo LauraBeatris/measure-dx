@@ -2,15 +2,14 @@
 
 import * as Ariakit from '@ariakit/react';
 import { matchSorter } from 'match-sorter';
-import { startTransition, useEffect, useMemo, useState } from 'react';
-import HCaptcha from '@hcaptcha/react-hcaptcha';
+import { startTransition, useMemo, useState } from 'react';
 
 import { PaperPlanIcon } from './icons/PaperPlanIcon';
-import { useRouter } from 'next/navigation';
 import { SpinnerIcon } from './icons/SpinnerIcon';
 import { Tables } from '../types/supabase';
 import { className } from '../lib/className';
 import { createClient } from '../lib/supabase/client';
+import { getBaseUrl } from '../lib/baseUrl';
 
 type Tool = Tables<'tools'>;
 
@@ -19,12 +18,9 @@ interface SelectToolProps {
 }
 
 export function SelectTool({ tools }: SelectToolProps) {
-  const router = useRouter();
-
   const [isNavigating, setIsNavigating] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [selectedTool, setSelectedTool] = useState<Tool | undefined>(tools[0]);
-  const [captchaToken, setCaptchaToken] = useState('');
 
   const matches = useMemo(() => {
     return matchSorter(tools, searchValue, {
@@ -34,33 +30,20 @@ export function SelectTool({ tools }: SelectToolProps) {
   }, [searchValue, tools]);
 
   async function handleClick() {
-    if (!selectedTool || !captchaToken) return;
+    if (!selectedTool) return;
 
     setIsNavigating(true);
 
     const supabase = createClient();
-    const { error } = await supabase.auth.signInAnonymously({
+    await supabase.auth.signInWithOAuth({
+      provider: 'github',
       options: {
-        captchaToken,
+        redirectTo: `${getBaseUrl()}/auth/callback?next=/tools/${selectedTool.id}`,
       },
     });
-
-    if (error) {
-      // TODO: Show toast with error
-
-      return;
-    }
-
-    router.push(`/tools/${selectedTool.id}`);
   }
 
-  useEffect(() => {
-    if (selectedTool?.id) {
-      router.prefetch(`/tools/${selectedTool.id}`);
-    }
-  }, [router, selectedTool]);
-
-  const isDisabled = !selectedTool || !captchaToken;
+  const isDisabled = !selectedTool;
 
   return (
     <div className="wrapper">
@@ -109,15 +92,8 @@ export function SelectTool({ tools }: SelectToolProps) {
         </Ariakit.SelectProvider>
       </Ariakit.ComboboxProvider>
 
-      <HCaptcha
-        sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY!}
-        onVerify={(token) => {
-          setCaptchaToken(token);
-        }}
-      />
-
       <Ariakit.Button
-        disabled={!selectedTool || !captchaToken}
+        disabled={!selectedTool}
         onClick={handleClick}
         className={className(
           'focus-visible:ariakit-outline mt-2 flex h-12 items-center justify-center gap-1 whitespace-nowrap rounded-lg bg-emerald-500 px-4 font-medium text-gray-50 shadow-xl hover:bg-emerald-600 sm:px-8 sm:text-lg',

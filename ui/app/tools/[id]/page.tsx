@@ -1,6 +1,7 @@
 import { RateToolForm } from '@/app/components/RateToolForm';
 import { PrimaryHeader } from '@/app/components/layout/PrimaryHeader';
 import { getToolById, listRateAreas } from '@/app/lib/supabase/queries';
+import { createClient } from '@/app/lib/supabase/server';
 import { Heading, HeadingLevel } from '@ariakit/react';
 import { notFound } from 'next/navigation';
 
@@ -11,6 +12,15 @@ interface ToolPageProps {
 }
 
 export default async function ToolPage({ params }: ToolPageProps) {
+  const {
+    data: { user },
+  } = await createClient().auth.getUser();
+
+  if (!user) {
+    // TODO - Handle case where user is unauthenticated
+    return notFound();
+  }
+
   const tool = await getToolById(params.id);
   const rateAreas = await listRateAreas();
 
@@ -22,7 +32,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
     <main className="flex h-full min-h-screen w-full flex-col items-center justify-center">
       <header className="flex flex-col text-center">
         <div
-          className="animate-fade-up flex flex-col items-center gap-2 opacity-0"
+          className="flex animate-fade-up flex-col items-center gap-2 opacity-0"
           style={{ animationDelay: '0.15s', animationFillMode: 'forwards' }}
         >
           <span className="text-md text-gray-500 dark:text-gray-100">
@@ -40,7 +50,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
           <PrimaryHeader />
           <HeadingLevel>
             <Heading
-              className="animate-fade-up mb-2 text-lg text-gray-800 opacity-0 md:text-xl dark:text-gray-100"
+              className="mb-2 animate-fade-up text-lg text-gray-800 opacity-0 md:text-xl dark:text-gray-100"
               style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}
             >
               Rate the following areas:

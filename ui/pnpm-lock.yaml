@@ -11,9 +11,6 @@ importers:
       '@ariakit/react':
         specifier: ^0.4.6
         version: 0.4.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@hcaptcha/react-hcaptcha':
-        specifier: ^1.10.1
-        version: 1.10.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@supabase/ssr':
         specifier: ^0.3.0
         version: 0.3.0(@supabase/supabase-js@2.43.0)
@@ -128,15 +125,6 @@ packages:
 
   '@floating-ui/utils@0.2.1':
     resolution: {integrity: sha512-9TANp6GPoMtYzQdt54kfAyMmz1+osLlXdg2ENroU7zzrtflTLrrC/lgrIfaSe+Wu0b89GKccT7vxXA0MoAIO+Q==}
-
-  '@hcaptcha/loader@1.2.4':
-    resolution: {integrity: sha512-3MNrIy/nWBfyVVvMPBKdKrX7BeadgiimW0AL/a/8TohNtJqxoySKgTJEXOQvYwlHemQpUzFrIsK74ody7JiMYw==}
-
-  '@hcaptcha/react-hcaptcha@1.10.1':
-    resolution: {integrity: sha512-P0en4gEZAecah7Pt3WIaJO2gFlaLZKkI0+Tfdg8fNqsDxqT9VytZWSkH4WAkiPRULK1QcGgUZK+J56MXYmPifw==}
-    peerDependencies:
-      react: '>= 16.3.0'
-      react-dom: '>= 16.3.0'
 
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
@@ -1804,15 +1792,6 @@ snapshots:
       '@floating-ui/utils': 0.2.1
 
   '@floating-ui/utils@0.2.1': {}
-
-  '@hcaptcha/loader@1.2.4': {}
-
-  '@hcaptcha/react-hcaptcha@1.10.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
-    dependencies:
-      '@babel/runtime': 7.24.4
-      '@hcaptcha/loader': 1.2.4
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
 
   '@humanwhocodes/config-array@0.11.14':
     dependencies:

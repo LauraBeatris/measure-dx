@@ -5,7 +5,6 @@ import { GitHubIcon } from './components/icons/GitHubIcon';
 import { links } from './constants';
 import { PrimaryHeader } from './components/layout/PrimaryHeader';
 
-// TODO - Make it responsive on mobile
 export default function Home() {
   return (
     <main className="flex h-full min-h-screen w-full flex-col items-center justify-center gap-5 p-5 md:p-0">
@@ -14,7 +13,7 @@ export default function Home() {
           <PrimaryHeader />
           <HeadingLevel>
             <Heading
-              className="animate-fade-up mb-2 text-lg text-gray-800 opacity-0 md:text-xl dark:text-gray-100"
+              className="mb-2 animate-fade-up text-lg text-gray-800 opacity-0 md:text-xl dark:text-gray-100"
               style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}
             >
               Measure the developer experience offered by different tools.
@@ -22,7 +21,7 @@ export default function Home() {
 
             <HeadingLevel>
               <Heading
-                className="animate-fade-up text-md text-gray-600 opacity-0 dark:text-gray-200"
+                className="text-md animate-fade-up text-gray-600 opacity-0 dark:text-gray-200"
                 style={{
                   animationDelay: '0.25s',
                   animationFillMode: 'forwards',
@@ -64,7 +63,7 @@ export default function Home() {
       </section>
 
       <footer
-        className="animate-fade-up container mx-auto flex flex-col items-center justify-center gap-4 opacity-0 md:flex-row"
+        className="container mx-auto flex animate-fade-up flex-col items-center justify-center gap-4 opacity-0 md:flex-row"
         style={{ animationDelay: '0.35s', animationFillMode: 'forwards' }}
       >
         <Link
