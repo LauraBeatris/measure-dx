@@ -2,9 +2,9 @@
  * Determines the deployment URL based on the environment: local development, preview, or production.
  */
 export function getBaseUrl() {
-  return process.env.VERCEL_ENV === 'production'
+  return process.env.NEXT_PUBLIC_VERCEL_ENV === 'production'
     ? 'https://dx-measure.vercel.app/'
-    : process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
+    : process.env.NEXT_PUBLIC_VERCEL_URL
+      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
       : 'http://localhost:3000';
 }
