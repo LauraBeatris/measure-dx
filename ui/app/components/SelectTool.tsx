@@ -38,7 +38,9 @@ export function SelectTool({ tools }: SelectToolProps) {
     await supabase.auth.signInWithOAuth({
       provider: 'github',
       options: {
-        redirectTo: `${getBaseUrl()}/auth/callback?next=/tools/${selectedTool.id}`,
+        queryParams: {
+          next: `${getBaseUrl()}/auth/callback?next=/tools/${selectedTool.id}`,
+        },
       },
     });
   }

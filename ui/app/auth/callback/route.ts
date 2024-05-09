@@ -7,8 +7,6 @@ export async function GET(request: Request) {
   const code = searchParams.get('code');
   const next = searchParams.get('next') ?? '/';
 
-  console.log({ searchParams });
-
   if (code) {
     const cookieStore = cookies();
     const supabase = createServerClient(
