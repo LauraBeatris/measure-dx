@@ -34,13 +34,14 @@ export function SelectTool({ tools }: SelectToolProps) {
 
     setIsNavigating(true);
 
+    const next = `/tools/${selectedTool.id}`;
+    const redirectTo = `${getBaseUrl()}/auth/callback?next=${next}`;
+
     const supabase = createClient();
     await supabase.auth.signInWithOAuth({
       provider: 'github',
       options: {
-        queryParams: {
-          next: `${getBaseUrl()}/auth/callback?next=/tools/${selectedTool.id}`,
-        },
+        redirectTo,
       },
     });
   }
