@@ -1,6 +1,6 @@
 'use server';
 
-import { listRateAreas } from './lib/supabase/queries';
+import { listFormQuestions } from './lib/supabase/queries';
 
 // TODO - Implement tool rating
 export async function measureTool(formData: FormData) {
@@ -12,7 +12,7 @@ export async function measureTool(formData: FormData) {
     0,
   );
 
-  const rateAreas = await listRateAreas();
+  const rateAreas = await listFormQuestions();
   const averagePerQuestion = totalRate / (rateAreas?.length ?? 0);
 
   console.log({ averagePerQuestion });

@@ -1,6 +1,6 @@
 import { MeasureToolForm } from '@/app/components/MeasureToolForm';
 import { PrimaryHeader } from '@/app/components/layout/PrimaryHeader';
-import { getToolById, listRateAreas } from '@/app/lib/supabase/queries';
+import { getToolById, listFormQuestions } from '@/app/lib/supabase/queries';
 import { createClient } from '@/app/lib/supabase/server';
 import { Heading, HeadingLevel } from '@ariakit/react';
 import { notFound, redirect } from 'next/navigation';
@@ -21,7 +21,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
   }
 
   const tool = await getToolById(params.id);
-  const rateAreas = await listRateAreas();
+  const rateAreas = await listFormQuestions();
 
   if (!tool || !rateAreas?.length) {
     return notFound();

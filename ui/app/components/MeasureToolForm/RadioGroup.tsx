@@ -5,7 +5,7 @@ import * as Ariakit from '@ariakit/react';
 import { RadioOption } from './RadioOption';
 import { Tables } from '@/app/types/supabase';
 
-type RateArea = Tables<'rate_areas'>;
+type RateArea = Tables<'form_questions'>;
 
 interface RadioGroupProps extends Pick<RateArea, 'id' | 'title'> {}
 

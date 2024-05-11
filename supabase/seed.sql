@@ -27,7 +27,7 @@ values
   );
 
 insert into
-  public.rate_areas (title)
+  public.form_questions (title)
 values
   (
     'Tool is simple, easy to install, setup and use'

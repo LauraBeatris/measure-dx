@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { RadioGroup } from './RadioGroup';
 import { Tables } from '@/app/types/supabase';
 
-type RateArea = Tables<'rate_areas'>;
+type RateArea = Tables<'form_questions'>;
 
 interface MeasureToolFormProps {
   rateAreas: RateArea[];

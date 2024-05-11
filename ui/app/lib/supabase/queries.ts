@@ -33,10 +33,10 @@ export async function getToolById(id: string) {
   return tool;
 }
 
-export async function listRateAreas() {
+export async function listFormQuestions() {
   const supabase = createClient<Database>();
 
-  const { data: rate_areas } = await supabase.from('rate_areas').select();
+  const { data: form_questions } = await supabase.from('form_questions').select();
 
-  return rate_areas;
+  return form_questions;
 }
