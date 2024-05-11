@@ -3,7 +3,7 @@ import { PrimaryHeader } from '@/app/components/layout/PrimaryHeader';
 import { getToolById, listRateAreas } from '@/app/lib/supabase/queries';
 import { createClient } from '@/app/lib/supabase/server';
 import { Heading, HeadingLevel } from '@ariakit/react';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 
 interface ToolPageProps {
   params: {
@@ -17,8 +17,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
   } = await createClient().auth.getUser();
 
   if (!user) {
-    // TODO - Handle case where user is unauthenticated
-    return notFound();
+    return redirect('/');
   }
 
   const tool = await getToolById(params.id);
