@@ -188,7 +188,7 @@
   background-color: hsl(204 4% 8%);
 }
 
-.rate-option {
+.radio-option {
   display: inline-flex;
   cursor: pointer;
   align-items: center;

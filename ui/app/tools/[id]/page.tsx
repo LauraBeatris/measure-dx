@@ -1,4 +1,4 @@
-import { RateToolForm } from '@/app/components/RateToolForm';
+import { MeasureToolForm } from '@/app/components/MeasureToolForm';
 import { PrimaryHeader } from '@/app/components/layout/PrimaryHeader';
 import { getToolById, listRateAreas } from '@/app/lib/supabase/queries';
 import { createClient } from '@/app/lib/supabase/server';
@@ -62,7 +62,7 @@ export default async function ToolPage({ params }: ToolPageProps) {
         className="animate-fade-up opacity-0"
         style={{ animationDelay: '0.35s', animationFillMode: 'forwards' }}
       >
-        <RateToolForm rateAreas={rateAreas} />
+        <MeasureToolForm rateAreas={rateAreas} />
       </section>
     </main>
   );

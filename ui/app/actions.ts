@@ -3,7 +3,7 @@
 import { listRateAreas } from './lib/supabase/queries';
 
 // TODO - Implement tool rating
-export async function rateTool(formData: FormData) {
+export async function measureTool(formData: FormData) {
   const formEntries = Object.fromEntries(formData);
   const formValues = Object.values(formEntries) as Array<string>;
 

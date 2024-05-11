@@ -1,21 +1,21 @@
-import { rateTool } from '@/app/actions';
+import { measureTool } from '@/app/actions';
 import * as Ariakit from '@ariakit/react';
 import Link from 'next/link';
-import { RateGroup } from './RateGroup';
+import { RadioGroup } from './RadioGroup';
 import { Tables } from '@/app/types/supabase';
 
 type RateArea = Tables<'rate_areas'>;
 
-interface RateToolFormProps {
+interface MeasureToolFormProps {
   rateAreas: RateArea[];
 }
 
-export function RateToolForm({ rateAreas }: RateToolFormProps) {
+export function MeasureToolForm({ rateAreas }: MeasureToolFormProps) {
   return (
-    <form action={rateTool} className="mt-2 flex flex-col">
+    <form action={measureTool} className="mt-2 flex flex-col">
       {rateAreas.map(({ id, title }) => (
         <Ariakit.RadioProvider key={id}>
-          <RateGroup id={id} title={title} />
+          <RadioGroup id={id} title={title} />
         </Ariakit.RadioProvider>
       ))}
 
