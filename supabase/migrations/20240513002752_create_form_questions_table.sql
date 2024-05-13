@@ -1,0 +1,6 @@
+CREATE TABLE form_questions (
+  id BIGINT GENERATED ALWAYS AS IDENTITY,
+  title TEXT NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
+  CONSTRAINT form_questions_pkey PRIMARY KEY (id)
+);

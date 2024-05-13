@@ -1,0 +1,8 @@
+CREATE TABLE tools (
+  id BIGINT GENERATED ALWAYS AS IDENTITY,
+  name TEXT NOT NULL,
+  logo_url TEXT NOT NULL,
+  website_url TEXT NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
+  CONSTRAINT tools_pkey PRIMARY KEY (id)
+);
