@@ -4,11 +4,9 @@ import { createClient } from './server';
 export async function getLeaderboard() {
   const supabase = createClient<Database>();
 
-  // TODO -> Remove `average_rate` column, refactor logic to calculate average rate
   const { data: tools } = await supabase
     .from('tools')
     .select()
-    .order('average_rate', { ascending: false });
 
   return tools;
 }
