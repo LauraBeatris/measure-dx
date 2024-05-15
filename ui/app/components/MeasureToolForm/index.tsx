@@ -8,9 +8,15 @@ type RateArea = Tables<'form_questions'>;
 
 interface MeasureToolFormProps {
   rateAreas: RateArea[];
+  toolId: number;
+  userId: string;
 }
 
-export function MeasureToolForm({ rateAreas }: MeasureToolFormProps) {
+export function MeasureToolForm({
+  rateAreas,
+  toolId,
+  userId,
+}: MeasureToolFormProps) {
   return (
     <form action={measureTool} className="mt-2 flex flex-col">
       {rateAreas.map(({ id, title }) => (
@@ -18,6 +24,9 @@ export function MeasureToolForm({ rateAreas }: MeasureToolFormProps) {
           <RadioGroup id={id} title={title} />
         </Ariakit.RadioProvider>
       ))}
+
+      <input type="hidden" value={toolId} name="toolId"></input>
+      <input type="hidden" value={userId} name="userId"></input>
 
       <footer className="ml-auto flex w-full items-end justify-end">
         <Link

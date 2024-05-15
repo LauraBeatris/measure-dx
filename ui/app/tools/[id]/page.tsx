@@ -62,7 +62,11 @@ export default async function ToolPage({ params }: ToolPageProps) {
         className="animate-fade-up opacity-0"
         style={{ animationDelay: '0.35s', animationFillMode: 'forwards' }}
       >
-        <MeasureToolForm rateAreas={rateAreas} />
+        <MeasureToolForm
+          toolId={tool.id}
+          userId={user.id}
+          rateAreas={rateAreas}
+        />
       </section>
     </main>
   );

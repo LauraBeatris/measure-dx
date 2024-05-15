@@ -1,19 +1,29 @@
 'use server';
 
+import { redirect } from 'next/navigation';
 import { listFormQuestions } from './lib/supabase/queries';
+import { createClient } from './lib/supabase/server';
 
-// TODO - Implement tool rating
 export async function measureTool(formData: FormData) {
-  const formEntries = Object.fromEntries(formData);
-  const formValues = Object.values(formEntries) as Array<string>;
+  const { userId, toolId, ...rest } = Object.fromEntries(formData);
 
-  const totalRate = formValues.reduce(
+  const scoreValues = Object.values(rest) as Array<string>;
+  const totalScore = scoreValues.reduce(
     (accumulator, currentValue) => accumulator + Number(currentValue),
     0,
   );
 
   const rateAreas = await listFormQuestions();
-  const averagePerQuestion = totalRate / (rateAreas?.length ?? 0);
+  const averageScore = totalScore / (rateAreas?.length ?? 0);
 
-  console.log({ averagePerQuestion });
+  const { error } = await createClient<any>()
+    .from('measurements')
+    .insert({ score: averageScore, tool_id: Number(toolId), user_id: userId });
+
+  if (error) {
+    // TODO - Improve error handling
+    throw new Error(error.message);
+  }
+
+  return redirect('/share');
 }
