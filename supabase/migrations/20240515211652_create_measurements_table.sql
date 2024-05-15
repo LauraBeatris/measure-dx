@@ -1,0 +1,9 @@
+CREATE TABLE measurements(
+  id BIGINT GENERATED ALWAYS AS IDENTITY,
+  score INT NOT NULL,
+  tool_id TEXT NOT NULL,
+  user_id uuid NOT NULL REFERENCES auth.users ON DELETE CASCADE,
+  created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
+  CONSTRAINT fk_tool FOREIGN KEY (tool_id) REFERENCES tools(id),
+  CONSTRAINT tools_pkey PRIMARY KEY (id)
+);
