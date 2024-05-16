@@ -1,0 +1,2 @@
+ALTER TABLE measurements
+  ALTER COLUMN score TYPE DECIMAL USING score::DECIMAL;
