@@ -1,7 +1,9 @@
 'use server';
 
+import { redirect } from 'next/navigation';
 import { listFormQuestions } from './lib/supabase/queries';
 import { createClient } from './lib/supabase/server';
+import { Database } from './types/supabase';
 
 export async function measureTool(formData: FormData) {
   const { userId, toolId, ...rest } = Object.fromEntries(formData);
@@ -15,13 +17,16 @@ export async function measureTool(formData: FormData) {
   const rateAreas = await listFormQuestions();
   const averageScore = totalScore / (rateAreas?.length ?? 0);
 
-  const { data, error } = await createClient<any>()
+  const { data, error, ...test } = await createClient<any>()
     .from('measurements')
-    .insert({ score: averageScore, tool_id: Number(toolId), user_id: userId });
+    .insert({ score: averageScore, tool_id: Number(toolId), user_id: userId })
+    .select('*');
 
   if (error) {
     throw new Error(error.message);
   }
 
-  return data;
+  const measurement = data[0];
+
+  return redirect(`/share/${measurement.id}`);
 }
