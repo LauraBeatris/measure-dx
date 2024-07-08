@@ -4,9 +4,7 @@ import { createClient } from './server';
 export async function getLeaderboard() {
   const supabase = createClient<Database>();
 
-  const { data: tools } = await supabase
-    .from('tools')
-    .select()
+  const { data: tools } = await supabase.from('leaderboard').select();
 
   return tools;
 }
@@ -34,7 +32,9 @@ export async function getToolById(id: string) {
 export async function listFormQuestions() {
   const supabase = createClient<Database>();
 
-  const { data: form_questions } = await supabase.from('form_questions').select();
+  const { data: form_questions } = await supabase
+    .from('form_questions')
+    .select();
 
   return form_questions;
 }

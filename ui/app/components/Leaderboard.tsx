@@ -13,11 +13,12 @@ export async function Leaderboard() {
 
   return (
     <ul
-      className="animate-fade-up mx-auto grid gap-2"
+      className="mx-auto grid animate-fade-up gap-2"
       style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}
     >
       {leaderboard.map((tool, index) => {
         const isWinner = index === 0;
+        const averageRate = (tool.average_rate ?? 0).toFixed(0);
 
         return (
           <li
@@ -26,10 +27,10 @@ export async function Leaderboard() {
           >
             <div className="flex items-center space-x-3">
               <Image
-                src={tool.logo_url}
+                src={tool.logo_url as string}
                 width={20}
                 height={20}
-                alt={tool.name}
+                alt={tool.name as string}
                 className="pointer-events-none h-10 w-10 rounded-full blur-0"
               />
 
@@ -44,7 +45,7 @@ export async function Leaderboard() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="line-clamp-1 w-72 text-sm text-gray-500 underline-offset-2 transition-all hover:text-gray-800 hover:underline"
-                  href={tool.website_url}
+                  href={tool.website_url as string}
                 >
                   {tool.website_url}
                 </Link>
@@ -63,7 +64,7 @@ export async function Leaderboard() {
             <div className="flex items-center space-x-1 rounded-md bg-gray-100 px-2 py-0.5 text-gray-700">
               <StarIcon />
 
-              <p className="text-sm">{tool.average_rate}</p>
+              <p className="text-sm">{averageRate}</p>
             </div>
           </li>
         );
