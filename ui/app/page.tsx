@@ -1,4 +1,4 @@
-import { HeadingLevel, Heading, Button, VisuallyHidden } from '@ariakit/react';
+import { HeadingLevel, Heading } from '@ariakit/react';
 import Link from 'next/link';
 import { Leaderboard } from './components/Leaderboard';
 import { GitHubIcon } from './components/icons/GitHubIcon';

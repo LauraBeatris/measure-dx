@@ -3,7 +3,6 @@
 import { redirect } from 'next/navigation';
 import { listFormQuestions } from './lib/supabase/queries';
 import { createClient } from './lib/supabase/server';
-import { Database } from './types/supabase';
 
 export async function measureTool(formData: FormData) {
   const { userId, toolId, ...rest } = Object.fromEntries(formData);

@@ -49,7 +49,7 @@ export default async function SharePage({ params }: SharePageProps) {
           style={{ animationDelay: '0.15s', animationFillMode: 'forwards' }}
         >
           <span className="text-md flex items-center gap-1 p-1 text-gray-500 dark:text-gray-100">
-            You've measured{' '}
+            You&apos;ve measured{' '}
             <strong className="font-medium text-gray-700">{tool.name}</strong>
             <Image
               src={tool.logo_url}

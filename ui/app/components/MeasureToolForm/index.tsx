@@ -3,7 +3,7 @@ import * as Ariakit from '@ariakit/react';
 import Link from 'next/link';
 import { RadioGroup } from './RadioGroup';
 import { Tables } from '@/app/types/supabase';
-import { useState } from 'react';
+import { SubmitButton } from './SubmitButton';
 
 type RateArea = Tables<'form_questions'>;
 
@@ -36,9 +36,7 @@ export function MeasureToolForm({
         >
           <span>Back</span>
         </Link>
-        <button className="focus-visible:ariakit-outline mt-1 flex h-12 w-max items-center justify-center gap-1 whitespace-nowrap rounded-lg bg-emerald-500 px-4 font-medium text-gray-50 shadow-xl hover:bg-emerald-600 sm:px-8 sm:text-lg">
-          Submit
-        </button>
+        <SubmitButton />
       </footer>
     </form>
   );
