@@ -21,7 +21,7 @@ export function RadioGroup({ id, title }: RadioGroupProps) {
       }
       className="mb-2 flex w-full gap-2"
     >
-      <label className="mb-3 grow pr-2.5 font-bold text-gray-900 sm:mb-0 sm:w-72 sm:font-normal">
+      <label className="mb-3 grow pr-2.5 font-bold text-gray-900 sm:mb-0 sm:w-72 sm:font-normal dark:text-gray-100">
         {title}
       </label>
 

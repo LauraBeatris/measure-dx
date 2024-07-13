@@ -50,7 +50,9 @@ export default async function SharePage({ params }: SharePageProps) {
         >
           <span className="text-md flex items-center gap-1 p-1 text-gray-500 dark:text-gray-100">
             You&apos;ve measured{' '}
-            <strong className="font-medium text-gray-700">{tool.name}</strong>
+            <strong className="font-medium text-gray-700 dark:text-gray-100">
+              {tool.name}
+            </strong>
             <Image
               src={tool.logo_url}
               alt={`${tool.name}'s logo`}
@@ -68,17 +70,22 @@ export default async function SharePage({ params }: SharePageProps) {
         className="flex animate-fade-up items-center justify-center gap-1 opacity-0"
         style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}
       >
-        <h2 className="w-9/12 text-center text-xl text-gray-900">
+        <h2 className="w-9/12 text-center text-xl text-gray-900 dark:text-gray-100">
           Your feedback helps the overall community in the effort of seeking the
           best experience for our favorite tools
         </h2>
       </div>
-      <Link
-        href="/get-started"
-        className="focus-visible:ariakit-outline mt-4 flex h-12 w-max items-center justify-center gap-1 whitespace-nowrap rounded-lg bg-emerald-500 px-4 font-medium text-gray-50 shadow-xl hover:bg-emerald-600 sm:px-8 sm:text-lg"
+      <div
+        className="flex animate-fade-up items-center justify-center gap-1 opacity-0"
+        style={{ animationDelay: '0.35s', animationFillMode: 'forwards' }}
       >
-        Continue with other tools <PaperPlanIcon />
-      </Link>
+        <Link
+          href="/get-started"
+          className="focus-visible:ariakit-outline mt-4 flex h-12 w-max items-center justify-center gap-1 whitespace-nowrap rounded-lg bg-emerald-500 px-4 font-medium text-gray-50 shadow-xl hover:bg-emerald-600 sm:px-8 sm:text-lg"
+        >
+          Continue with other tools <PaperPlanIcon />
+        </Link>
+      </div>
     </main>
   );
 }

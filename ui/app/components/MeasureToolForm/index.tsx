@@ -32,7 +32,7 @@ export function MeasureToolForm({
       <footer className="ml-auto flex w-full items-end justify-end">
         <Link
           href={`/get-started`}
-          className="focus-visible:ariakit-outline flex h-12 items-center justify-center gap-1 whitespace-nowrap text-gray-600 sm:px-8 sm:text-lg"
+          className="focus-visible:ariakit-outline flex h-12 items-center justify-center gap-1 whitespace-nowrap text-gray-600 sm:px-8 sm:text-lg dark:text-gray-100"
         >
           <span>Back</span>
         </Link>
